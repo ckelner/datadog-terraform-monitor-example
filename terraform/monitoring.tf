@@ -2,29 +2,19 @@
 # Datadog Monitor w/o Module
 # https://www.terraform.io/docs/providers/datadog/r/monitor.html
 #
-resource "datadog_monitor" "common_disk_full" {
-  name = "[${var.common_name}] {{host.name}} {{device.name}} disks are full - [${var.monitor_suffix}]"
-  type = "metric alert"
-  message = <<EOT
-  {{host.name}} disk are full, let's understand why @slack-channel-testing123
-
-  {{#is_alert}}
-
-  Disk space is critical, above {{threshold}}
-  @pagerduty-Datadog-Demo-Test
-
-  {{/is_alert}}
-EOT
-  query = "avg(last_5m):max:system.disk.in_use{role:nginx} by {name,host,device} > 0.9"
-  thresholds {
-    warning = 0.8
-    critical = 0.9
-    warning_recovery  = 0.79
-    critical_recovery = 0.89
-  }
+resource "datadog_monitor" "cloudfront-test" {
+  name = "DD Solutions Engineering Terraform Test"
+  type = "query alert"
+  query = "avg(last_5m):avg:aws.cloudfront.5xx_error_rate{aws_account:00000} > 5"
+  require_full_window = false
   notify_no_data = false
-  evaluation_delay = 360
-  no_data_timeframe = 20
-  include_tags = true
-  tags = ["cake:test", "solutions-engineering", "kelner:hax", "service:nginx", "team:example"]
+  evaluation_delay = 900
+  message = "Cloudfront 5xx error rate has increased in the last 5 minutes."
+  thresholds {
+    critical = 5
+    warning = 3.5
+    warning_recovery = 3.3
+    critical_recovery = 3.3
+  }
+  tags = ["cake:test", "solutions-engineering", "kelner:hax"]
 }
