@@ -84,8 +84,6 @@ You can then take these IDs and open them in the Datadog UI:
 - `https://app.datadoghq.com/monitors/<id from out>` replacing `<id from out>`
 with the actual id at the end of the TF apply.
 
-Example here:
-![img](./images/tf_monitor.png)
 
 
 # Destroy
