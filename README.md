@@ -21,7 +21,8 @@ check out the following:
 - https://github.com/ckelner/terraform-datadog
 - https://github.com/ckelner/terraform-intro-demo
 
-This repo was carved from work done at Datadog: https://github.com/DataDog/Miscellany/tree/master/create_monitor_terraform
+This repo was carved from work done at Datadog:
+https://github.com/DataDog/Miscellany/tree/master/create_monitor_terraform
 
 # Noteworthy
 - This repo does not use [Terraform
@@ -236,6 +237,19 @@ Outputs:
 
 cloudfront-test = 6246701
 ```
+
+# Modifying the Monitor out of band
+If a resource is modified out of band (through some means that is not terraform,
+e.g. Datadog UI, API, or third party library) when running `terraform plan`
+again (without making any changes to the terraform configuration itself) you
+will see that the plan wants to make changes as seen in the animated gif below:
+![img](https://dha4w82d62smt.cloudfront.net/items/330T3H1F0G0k2G2T2Z30/Screen%20Recording%202018-09-06%20at%2005.03%20PM.gif)
+
+Terraform will try set the monitor resource to the state it believes it should be
+as defined in the configuration. When using tools like Terraform, they cannot
+account for changes that happen outside it's scope, so if changes are made out of
+band (UI, API, etc) Terraform will revert them to match the configuration defined
+in your codebase.
 
 # Destroy
 Run `terraform destroy` to delete all your resources. Ideally you should, in a
