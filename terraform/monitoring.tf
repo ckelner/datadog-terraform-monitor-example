@@ -13,8 +13,8 @@ resource "datadog_monitor" "cloudfront-test" {
   thresholds {
     critical = 5
     warning = 3.5
-    warning_recovery = 3.3
-    critical_recovery = 3.3
+    warning_recovery = 3.5
+    critical_recovery = 3.5
   }
   tags = ["cake:test", "solutions-engineering", "kelner:hax"]
 }
