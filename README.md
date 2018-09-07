@@ -243,7 +243,8 @@ If a resource is modified out of band (through some means that is not terraform,
 e.g. Datadog UI, API, or third party library) when running `terraform plan`
 again (without making any changes to the terraform configuration itself) you
 will see that the plan wants to make changes as seen in the animated gif below:
-![img](https://dha4w82d62smt.cloudfront.net/items/330T3H1F0G0k2G2T2Z30/Screen%20Recording%202018-09-06%20at%2005.03%20PM.gif)
+
+![img](https://i.imgur.com/f0kggDb.gif)
 
 Terraform will try set the monitor resource to the state it believes it should be
 as defined in the configuration. When using tools like Terraform, they cannot
