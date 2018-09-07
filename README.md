@@ -245,6 +245,7 @@ again (without making any changes to the terraform configuration itself) you
 will see that the plan wants to make changes as seen in the animated gif below:
 
 ![img](https://github.com/ckelner/datadog-terraform-monitor-example/blob/master/monitor_tf.gif)
+[Full resolution here](https://cl.ly/a5acc199d63b)
 
 Terraform will try set the monitor resource to the state it believes it should be
 as defined in the configuration. When using tools like Terraform, they cannot
